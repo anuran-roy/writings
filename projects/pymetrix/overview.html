@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript">
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/themes/prism.min.css" rel="stylesheet"/>
+  <link href="https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-atom-dark.css" rel="stylesheet"/>
+  <title>
+   Default title
+  </title>
+ </head>
+ <body>
+  <div class="font-serif">
+   <div class="grid grid-cols-1 mx-3 lg:grid-cols-10 w-100 lg:h-screen" id="navbar">
+    <div class="h-100 overflow-hidden justify-center flex lg:flex-col flex-row text-center col-span-1">
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/" id="Home">
+      Home
+     </a>
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/posts.html" id="Posts">
+      Posts
+     </a>
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/intro.html" id="About">
+      About
+     </a>
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/sitemap.xml" id="Sitemap">
+      Sitemap
+     </a>
+    </div>
+    <div class="lg:border-r-2 lg:border-l-2 col-span-7 lg:overflow-y-scroll sm:flex sm:flex-wrap" id="content">
+     <div class="flex flex-wrap">
+      <div class="border-b-2 my-2 p-3">
+       <h1 class="text-4xl font-bold">
+        "Pymetrix: An Overview"
+       </h1>
+       <div class="py-3 my-3 text-2xl font-semibold text-gray-500" id="summary">
+       </div>
+       <div class="px-2 py-5 text-gray-700">
+        <p id="published_on">
+         Date Published: 2021-11-20T01:03:40+05:30
+        </p>
+       </div>
+      </div>
+      <div class="px-3 py-2 my-2 mx-3 space-y-3 text-xl">
+       <h1 id="image-imagesml-buzzillustration2png">
+        image: "images/ml-buzz/Illustration2.png"
+       </h1>
+       <p>
+        toc: true
+tags: [python, analytics, pymetrix, foss]
+categories:  [Docs]
+draft: false
+       </p>
+       <hr/>
+       <div class="container row" style="display: flex;flex-direction: row;flex-wrap: wrap;">
+        <a class="btn" href="https://github.com/anuran-roy/pymetrix-python/zipball/main">
+         Download as .zip
+        </a>
+        <a class="btn" href="https://github.com/anuran-roy/pymetrix-python/tarball/main">
+         Download as .tar.gz
+        </a>
+        <a class="btn" href="https://github.com/anuran-roy/pymetrix-python/">
+         View on Github
+        </a>
+       </div>
+       <div class="container row" style="display: flex;flex-direction: row;flex-wrap: wrap;">
+        <img alt="Codacy Code Grade" src="https://img.shields.io/codacy/grade/905841c62125433ca59068e97b70920e/main?style=for-the-badge"/>
+        <img alt="Github Stars" src="https://img.shields.io/github/stars/anuran-roy/pymetrix-python?style=for-the-badge"/>
+        <img alt="GitHub Forks" src="https://img.shields.io/github/forks/anuran-roy/pymetrix-python?style=for-the-badge"/>
+        <img alt="GitHub Repo Size" src="https://img.shields.io/github/repo-size/anuran-roy/pymetrix-python?style=for-the-badge"/>
+        <img alt="Lines of Code" src="https://img.shields.io/tokei/lines/github/anuran-roy/pymetrix-python?style=for-the-badge"/>
+       </div>
+       <h2 id="how-does-pymetrix-work">
+        How does Pymetrix work?
+       </h2>
+       <p>
+        <img alt="Pymetrix Visualization Sample" src="/images/projects/pymetrix-python/visualization-preview.jpeg"/>
+        <center>
+         <p>
+          (A sample graph visualization)
+         </p>
+        </center>
+       </p>
+       <p>
+        Pymetrix basically tries to be an opensource plug-'n'-play python analytics library. It can be extended with various plugins that can be implemented in a manner I've tried to keep as straightforward as possible.
+       </p>
+       <h2 id="organization">
+        Organization
+       </h2>
+       <h3 id="the-flow-graph-the-backbone">
+        The Flow Graph: The backbone
+       </h3>
+       <p>
+        Being heavily inspired from Google Analytics, Pymetrix makes use of graphs to denote the entire flow of control, with each node denoting the function (or object) you want to get metrics of. The graph structure also enables you to get metrics of the sequence of execution, so that you can determine UX metrics as well.
+       </p>
+       <p>
+        The graph and its various elements are represented by the 3 types of Flow Classes in
+        <code>
+         flow.py
+        </code>
+        , as described in the
+        <a href="/projects/pymetrix-python/flow">
+         next section
+        </a>
+        .
+       </p>
+       <h3 id="the-database-the-memo-keeper">
+        The Database: The Memo Keeper
+       </h3>
+       <p>
+        The information of the graph, the various operations performed by various plugins, or any thing you can think to store for future - all go inside the database.
+       </p>
+       <h3 id="plugins-your-best-friends">
+        Plugins: Your Best friends
+       </h3>
+       <p>
+        If the graph protocol is the backbone of Pymetrix, then Plugins are the internal systems of Pymetrix. They are the ones that measure and provide you the metrics you need.
+       </p>
+       <p>
+        I've started Pymetrix with extensibility as the topmost priority - as with most Open Source Software. Inherit the plugins class, determine the parts you wanna track, and that's all you need to do to set up Plugins. You can even write custom plugins.
+       </p>
+      </div>
+     </div>
+     <div class="grid lg:grid-cols-8 grid-cols-1 w-100 my-5 py-5" id="navigation">
+      <a class="justify-center hover:bg-gray-800 rounded-md hover:text-white font-bold border-2 col-span-1 lg:col-span-2 text-center text-gray-700 px-5 py-3 mx-5" href="https://anuran-roy.github.io/writings/projects/pymetrix/home.html">
+       ⬅  Previous Post
+      </a>
+      <div class="col-span-1 md:cols-span-1 lg:col-span-4 px-5 mx-5 py-3">
+      </div>
+      <a class="invisible justify-center hover:bg-gray-800 rounded-md hover:text-white border-2 font-bold col-span-1 lg:col-span-2 text-center text-gray-700 px-5 py-3 mx-5" href="">
+       Next Post  ➡
+      </a>
+     </div>
+     <div class="invisible py-5 my-5">
+     </div>
+    </div>
+    <div class="lg:top-0 lg:bottom-0 lg:h-screen justify-center content-center align-center object-center flex flex-col lg:col-span-2 text-center m-3" id="meta">
+     <p class="flex justify-center items-center flex-col">
+      <img alt="Author Picture" class="rounded-full py-5 my-5" src="https://pbs.twimg.com/profile_images/1421779872364564482/vZljyGHa_400x400.jpg" width="30%"/>
+      <div class="text-2xl text-center font-bold">
+       About
+      </div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, accusamus explicabo a veritatis culpa, expedita quos illo quibusdam earum mollitia molestiae ducimus sed sunt sit. Magnam earum quia est a iure voluptatem eligendi excepturi place
+     </p>
+     <p class="flex flex-col lg:columns-3 columns-1 py-5 my-5">
+      <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="http://github.com/anuran-roy/">
+       GitHub
+      </a>
+      <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="http://www.linkedin.com/in/anuran-roy/">
+       LinkedIn
+      </a>
+      <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="http://twitter.com/AnuranRoy">
+       Twitter
+      </a>
+     </p>
+    </div>
+   </div>
+   <div class="fixed left-0 right-0 bottom-0 bg-gray-100 opacity-80 hover:opacity-100 p-3 align-center flex justify-center items-center flex-col" id="footer">
+    <span class="text-gray-700 text-center">
+     Using Blogtastic theme in
+     <a class="font-bold text-blue-500" href="https://github.com/fossworx-labs/fossfolio">
+      FOSSfolio
+     </a>
+     . Made by
+     <a class="font-bold text-blue-500" href="https://linktr.ee/anuranroy">
+      Anuran
+     </a>
+     with 💙
+    </span>
+   </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js">
+  </script>
+ </body>
+</html>

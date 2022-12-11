@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript">
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/themes/prism.min.css" rel="stylesheet"/>
+  <link href="https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-atom-dark.css" rel="stylesheet"/>
+  <title>
+   Writing my first Tezos contract
+  </title>
+ </head>
+ <body>
+  <div class="font-serif">
+   <div class="grid grid-cols-1 mx-3 lg:grid-cols-10 w-100 lg:h-screen" id="navbar">
+    <div class="h-100 overflow-hidden justify-center flex lg:flex-col flex-row text-center col-span-1">
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/" id="Home">
+      Home
+     </a>
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/posts.html" id="Posts">
+      Posts
+     </a>
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/intro.html" id="About">
+      About
+     </a>
+     <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="/sitemap.xml" id="Sitemap">
+      Sitemap
+     </a>
+    </div>
+    <div class="lg:border-r-2 lg:border-l-2 col-span-7 lg:overflow-y-scroll sm:flex sm:flex-wrap" id="content">
+     <div class="flex flex-wrap">
+      <div class="border-b-2 my-2 p-3">
+       <h1 class="text-4xl font-bold">
+        Writing my first Tezos contract
+       </h1>
+       <div class="py-3 my-3 text-2xl font-semibold text-gray-500" id="summary">
+        'Too many options! What do I choose?' - Yes that was me. But you don't need to be. Learn how you can build your first Tezos DApp!
+       </div>
+       <div class="px-2 py-5 text-gray-700">
+        <p id="published_on">
+         Date Published: 2022-02-03T11:07:14+05:30
+        </p>
+       </div>
+      </div>
+      <div class="px-3 py-2 my-2 mx-3 space-y-3 text-xl">
+       <h2 id="why-did-i-write-this-article">
+        Why did I write this article?
+       </h2>
+       <blockquote>
+        <p>
+         <p style="font-size: 30px;">
+          <b>
+           <q>
+            Too many options! What do I choose?
+           </q>
+          </b>
+         </p>
+         <p style="text-align: right;">
+          ~ A confused Tezos DApp enthusiast
+         </p>
+        </p>
+       </blockquote>
+       <p>
+        Yes that was me.
+       </p>
+       <p>
+        So I wanted to get my feet wet with Tezos - since quite sometime. Infact, joining the local
+        <strong>
+         <em>
+          Tezos Developers Community
+         </em>
+        </strong>
+        only boosted my eagerness to work with blockchain in general, and Tezos in particular.
+       </p>
+       <div class="note" style="background-color:#E9D8FD; color: #69337A; border-left: solid #805AD5 4px; border-radius: 4px; padding:0.7em;margin: 10px;">
+        <span>
+         <p style="margin-top:1em; text-align:center">
+          <b>
+           Note
+          </b>
+         </p>
+         <p style="margin-left:1em;">
+          If you don't know what Tezos is,
+          <b>
+           you should definitely read
+           <a href="https://www.csedvit.com/crypto-chronicles-part1-tezos/">
+            my article on Tezos
+           </a>
+           !
+          </b>
+          😃
+         </p>
+         <!-- <p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Gary Provost</b> <i>(100 Ways to Improve Your Writing, 1985)</i> -->
+        </span>
+       </div>
+       <!-- If you don't know what Tezos is, you should definitely read [my article on Tezos](https://www.csedvit.com/crypto-chronicles-part1-tezos/)! 😃 -->
+       <p>
+        But getting started with Tezos is, to say the least, daunting at first, given the sheer number of options people have while building on it. You can build on top of the Tezos blockchain using either one, or a combination of the following languages:
+       </p>
+       <ul>
+        <li>
+         <strong>
+          JavaScript/TypeScript
+         </strong>
+         : The official documentation uses it.
+        </li>
+        <li>
+         <strong>
+          Python
+         </strong>
+         : The Cryptoverse Wars course uses it.
+        </li>
+        <li>
+         <strong>
+          Michelson
+         </strong>
+         : The native language for the Tezos blockchain
+        </li>
+        <li>
+         <strong>
+          OCaml
+         </strong>
+         : Used by the folks at Zastrin for their Tezos blockchain course.
+        </li>
+        <li>
+         Any of the LIGO Languages (
+         <strong>
+          JsLIGO
+         </strong>
+         ,
+         <strong>
+          CameLIGO
+         </strong>
+         ,
+         <strong>
+          PascalLIGO
+         </strong>
+         ,
+         <strong>
+          ReasonLIGO
+         </strong>
+         )
+        </li>
+       </ul>
+       <p>
+        And all this is discounting the number of options you have at hand to add into your project. Which may be a good thing for experienced developers, but an
+        <strong>
+         ABSOLUTE NIGHTMARE
+        </strong>
+        for people trying to get started with it.
+       </p>
+       <p>
+        Thankfully,
+        <a href="https://helvantine.medium.com/">
+         <strong>
+          helvantine
+         </strong>
+        </a>
+        has written
+        <a href="https://levelup.gitconnected.com/set-up-a-tezos-smart-contract-ide-with-smartpy-and-taquito-32fe445d274">
+         a good article on Tezos
+        </a>
+        on making your first Tezos contract (which helped me out to make my first contract too), and I'll be using that as a reference for this post.
+       </p>
+       <p>
+        That said, I actually noticed a lack of details in the article - the inner workings not explained lucidly (perhaps the author expected the audience with a background of software dev in general?), and I am trying to simplify some of the seemingly arcane stuff for everyone to understand. 😃
+       </p>
+       <h2 id="setting-up-the-environment">
+        Setting up the environment
+       </h2>
+       <p>
+        As in every blog, I'll say this one again: Setting up your development environment is one of the biggest factors between a clean project that's developed quick, and a messy project that takes days to debug and test.
+       </p>
+       <p>
+        <strong>
+         Even Sun Tzu agrees with me:
+        </strong>
+       </p>
+       <p>
+        <img alt="Dev Tzu Anuran meme" src="/assets/images/tezos-contract/sun-tzu-meme.png"/>
+       </p>
+       <p>
+        <center>
+         (Original content made by Yours Truly 😎)
+        </center>
+       </p>
+       <p>
+        So without any further ado, let's set up our development environment for developing on Tezos!
+       </p>
+       <h3 id="step-0-evaluate-what-youll-need-for-the-project">
+        Step 0: Evaluate what you'll need for the project
+       </h3>
+       <p>
+        Yes, this is an often-overlooked but really important part of setting up your environment.
+       </p>
+       <p>
+        Why, you may ask. Consider the following scenarios:
+       </p>
+       <ul>
+        <li>
+         You have a small project. Installing unnecessary tools bloats your work and makes it difficult for you to manage the size of the project.
+        </li>
+        <li>
+         Often projects have dependencies that conflict. This is an even greater problem that's addressed in the next step.
+        </li>
+       </ul>
+       <p>
+        For this project, we'll be needing:
+       </p>
+       <ul>
+        <li>
+         <a href="">
+          <strong>
+           SmartPy CLI
+          </strong>
+         </a>
+        </li>
+        <li>
+         <a href="https://www.python.org/downloads/">
+          <strong>
+           Python 3
+          </strong>
+         </a>
+         (I have tested with 3.9.5)
+        </li>
+        <li>
+         <a href="https://nodejs.dev/download/">
+          <strong>
+           NodeJS
+          </strong>
+         </a>
+         (I have tested with v16.13.2, the latest LTS version)
+        </li>
+        <li>
+         An
+         <strong>
+          sh
+         </strong>
+         shell (like Bash or Zsh) (I use
+         <strong>
+          zsh
+         </strong>
+         )
+        </li>
+        <li>
+         <a href="https://templewallet.com/download/">
+          <strong>
+           Temple Wallet Web Browser extension
+          </strong>
+         </a>
+         (I have tested on Google Chrome)
+        </li>
+        <li>
+         <a href="https://telegram.org/">
+          <strong>
+           Telegram App
+          </strong>
+         </a>
+         with Telegram Account.
+        </li>
+       </ul>
+       <div class="tip" style="background-color:#6ef17f; color: #146356; border-left: solid #146356 4px; border-radius: 4px; padding:0.7em;margin: 10px;">
+        <span>
+         <p style="margin-top:1em; text-align:center">
+          <b>
+           Quick Tip
+          </b>
+         </p>
+         <p style="margin-left:1em;">
+          You should use
+          <b>
+           <a href="https://github.com/nvm-sh/nvm">
+            Node Version Manager (NVM)
+           </a>
+          </b>
+          for maintaining your NodeJS environment versions. Install it using:
+          <pre><code class="language-bash">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+</code></pre>
+          To use the latest LTS version in your project, go to your project root directory in your terminal and type:
+          <pre><code class="language-bash">nvm install --lts
+nvm use --lts
+</code></pre>
+         </p>
+         <!-- <p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Gary Provost</b> <i>(100 Ways to Improve Your Writing, 1985)</i> 
+</p></span> -->
+        </span>
+       </div>
+       <p>
+        <br/>
+       </p>
+       <h3 id="step-1-create-your-project-with-the-proper-environment-and-only-the-necessary-tools">
+        Step 1: Create your project with the proper environment and ONLY the necessary tools
+       </h3>
+       <p>
+        First, we'll create a directory called
+        <code>
+         First Contract
+        </code>
+        and enter into it:
+       </p>
+       <pre><code class="language-bash">mkdir "First Contract"
+cd "First Contract"
+</code></pre>
+       <p>
+        The folder
+        <code>
+         First Contract
+        </code>
+        is your
+        <strong>
+         project root directory
+        </strong>
+        . Inside
+        <code>
+         First Contract
+        </code>
+        , we'll create some more directories:
+       </p>
+       <pre><code class="language-bash">mkdir builds contracts compilation deployment
+</code></pre>
+       <h4 id="setting-up-smartpy-cli">
+        Setting up SmartPy CLI
+       </h4>
+       <p>
+        According to the SmartPy Blog:
+       </p>
+       <blockquote>
+        <p>
+         SmartPy is a high-level smart contracts library and comes with related tools in the form of SmartPy.io to greatly ease the accessibility, understandability and provability of smart contracts on Tezos. It combines several popular aspects of software engineering to create an attractive language for smart contract development on Tezos.
+        </p>
+       </blockquote>
+       <p>
+        And according to their official website:
+       </p>
+       <blockquote>
+        <p>
+         The SmartPy language is available through a Python library for building and analyzing Tezos smart contracts. It comes with various tools: a compiler that generates Michelson code, a simulation engine, a contract explorer, etc.
+        </p>
+       </blockquote>
+       <p>
+        To install SmartPy CLI, type the following in your terminal:
+       </p>
+       <pre><code class="language-bash">sh &lt;(curl -s https://smartpy.io/cli/install.sh)
+</code></pre>
+       <p>
+        This should install SmartPy CLI on your home directory, specifically at
+        <code>
+         ~/smartpy-cli/
+        </code>
+        .
+       </p>
+       <p>
+        To verify the installation, type the following in your terminal:
+       </p>
+       <pre><code class="language-bash">~/smartpy-cli/SmarPy.sh --version
+</code></pre>
+       <p>
+        <br/>
+       </p>
+       <div class="tip" style="background-color:#6ef17f; color: #146356; border-left: solid #146356 4px; border-radius: 4px; padding:0.7em;margin: 10px;">
+        <span>
+         <p style="margin-top:1em; text-align:center">
+          <b>
+           Quick Tip
+          </b>
+         </p>
+         <p style="margin-left:1em;">
+          Typing ``~/smartpy-cli/SmarPy.sh`` for every little action you do is a drain on productivity, especially over prolonged periods.
+To avoid this, use this hack:
+- Type the following in your terminal:
+          <pre><code class="language-bash">nano ~/.bashrc
+</code></pre>
+          if you are using
+          <b>
+           bash
+          </b>
+          , or:
+          <pre><code class="language-bash">nano ~/.zshrc
+</code></pre>
+          if you are using
+          <b>
+           zsh
+          </b>
+          shell.
+
+- Copy the following into the text editor window that opens:
+          <pre><code class="language-bash">alias smartpy="~/smartpy-cli/SmartPy.sh"
+</code></pre>
+          Press ``Ctrl + S`` to save the file, and ``Ctrl + X`` to exit.
+
+- Close the console window(s), and open them again. Now doing ``smartpy --version`` should yield the same output as ``~/smartpy-cli/SmartPy.sh --version``.
+         </p>
+         <!-- <p style='margin-bottom:1em; margin-right:1em; text-align:right; font-family:Georgia'> <b>- Gary Provost</b> <i>(100 Ways to Improve Your Writing, 1985)</i> 
+</p></span> -->
+        </span>
+       </div>
+       <p>
+        <br/>
+       </p>
+       <h4 id="setting-up-python">
+        Setting up Python
+       </h4>
+       <p>
+        We need to install the Python
+        <code>
+         virtualenv
+        </code>
+        package to create our Python virtual environment. Install and configure it for the project with:
+       </p>
+       <pre><code class="language-bash">pip install virtualenv
+python3 -m virtualenv env
+source env/bin/activate
+</code></pre>
+       <p>
+        There will be a few lines of output, mostly telling which version of Python is being used to make the virtual environment. Also, you'll most probably notice some extra text on your terminal cursor, possibly showing
+        <code>
+         env
+        </code>
+        somewhere (on the left for
+        <strong>
+         Windows CMD or PowerShell
+        </strong>
+        , left for
+        <strong>
+         bash
+        </strong>
+        users, and either left or right for
+        <strong>
+         zsh
+        </strong>
+        users).
+       </p>
+       <p>
+        <strong>
+         What this does:
+        </strong>
+        This basically installs virtualenv package for Python, then creates a virtual environment for the project, and then activates it.
+       </p>
+       <h4 id="installing-python-packages">
+        Installing Python packages
+       </h4>
+       <p>
+        For the project, we'll be needing the following Python packages:
+       </p>
+       <ul>
+        <li>
+         <a href="https://python-future.org/">
+          <strong>
+           future
+          </strong>
+         </a>
+         (I've used v0.18.2)
+        </li>
+        <li>
+         <a href="https://numpy.org/">
+          <strong>
+           numpy
+          </strong>
+         </a>
+         (I've used v1.22.1)
+        </li>
+        <li>
+         <a href="https://scipy.org/">
+          <strong>
+           scipy
+          </strong>
+         </a>
+         (I've used v1.7.3)
+        </li>
+        <li>
+         <a href="https://smartpy.io/">
+          <strong>
+           smartpy
+          </strong>
+         </a>
+         (I've used v0.2.1)
+        </li>
+       </ul>
+       <p>
+        Install it using:
+       </p>
+       <pre><code class="language-bash">pip install future numpy scipy smartpy
+</code></pre>
+       <p>
+        Or alternatively, you can download the
+        <a href="https://raw.githubusercontent.com/anuran-roy/first-tezos-smart-contract/main/requirements.txt">
+         <strong>
+          requirements.txt
+         </strong>
+        </a>
+        file inside your project root and from the terminal at the project root, type:
+       </p>
+       <pre><code class="language-bash">pip install -r requirements.txt
+</code></pre>
+       <p>
+        in the terminal.
+       </p>
+       <h4 id="setting-up-nodejs-and-npm">
+        Setting up NodeJS and NPM
+       </h4>
+       <p>
+        Now, we need to set up the node environment for the project. We do it by:
+       </p>
+       <pre><code class="language-bash">nvm install --lts
+nvm use --lts
+npm init --yes
+</code></pre>
+       <p>
+        <strong>
+         What this does:
+        </strong>
+        This uses the latest LTS version of NodeJS for your project, and initializes your NPM environment using default settings.
+       </p>
+       <h4 id="installing-node-dependencies-from-npm">
+        Installing Node dependencies from npm
+       </h4>
+       <p>
+        We'll also need the following npm packages:
+       </p>
+       <ul>
+        <li>
+         <a href="https://www.npmjs.com/package/ts-node">
+          <strong>
+           ts-node
+          </strong>
+         </a>
+         (I've used v10.4.0)
+        </li>
+        <li>
+         <a href="https://www.npmjs.com/package/dotenv">
+          <strong>
+           dotenv
+          </strong>
+         </a>
+         (I've used v15.0.0)
+        </li>
+        <li>
+         <a href="https://www.npmjs.com/package/@taquito/taquito">
+          <strong>
+           @taquito/taquito
+          </strong>
+         </a>
+         (I've used v11.2.0)
+        </li>
+        <li>
+         <a href="https://www.npmjs.com/package/@taquito/signer">
+          <strong>
+           @taquito/signer
+          </strong>
+         </a>
+         (I've used v11.2.0)
+        </li>
+       </ul>
+       <p>
+        We install them using:
+       </p>
+       <pre><code class="language-bash">npm install @taquito/taquito @taquito/signer ts-node dotenv
+</code></pre>
+       <h4 id="creating-the-other-required-files">
+        Creating the other required files
+       </h4>
+       <p>
+        Now we create:
+- a new file in the project root directory with the name
+        <code>
+         compile.sh
+        </code>
+        .
+- another file in the project root directory with the name
+        <code>
+         .env
+        </code>
+        - a third file in the project root directory with the name
+        <code>
+         .gitignore
+        </code>
+        - a fourth file in the
+        <code>
+         deployment/
+        </code>
+        directory with the name
+        <code>
+         deploy.ts
+        </code>
+       </p>
+       <p>
+        At the end of the setup, your directory structure should look something like this (except probably
+        <code>
+         README.md
+        </code>
+        ): 👀
+       </p>
+       <p>
+        <img alt="The directory structure" src="/assets/images/tezos-contract/final-directory-structure.png"/>
+       </p>
+       <p style="text-align: center">
+        (Just FYI: I am using One Dark Pro Flat theme with Material Icon in VS Code)
+       </p>
+       <h4 id="setting-up-temple-wallet">
+        Setting up Temple Wallet
+       </h4>
+       <p>
+        Now, we'll install the Temple Wallet Browser Extension.
+       </p>
+       <p>
+        <strong>
+         If you are using Chrome or a Chromium-based Browser (like Brave)
+        </strong>
+        : Follow the instructions
+        <a href="https://support.google.com/chrome_webstore/answer/2664769?hl=en">
+         <strong>
+          here
+         </strong>
+        </a>
+        to install an extension.
+       </p>
+       <p>
+        <strong>
+         If you are using Firefox or a Firefox-based Browser
+        </strong>
+        : Follow the instructions
+        <a href="https://support.mozilla.org/en-US/kb/find-and-install-add-ons-add-features-to-firefox">
+         <strong>
+          here
+         </strong>
+        </a>
+        to install an extension.
+       </p>
+       <p>
+        After installing the extension, you can find the first setup steps in the extension itself.
+       </p>
+       <p>
+        For troubleshooting help,
+        <a href="https://madfish.crunch.help/temple-wallet">
+         <strong>
+          you can refer here
+         </strong>
+        </a>
+        .
+       </p>
+       <h4 id="setting-up-telegram">
+        Setting up Telegram
+       </h4>
+       <p>
+        Now, we'll install Telegram Messenger on our phone and PC. Skip it if you already have Telegram installed.
+       </p>
+       <p>
+        For installation instructions about Telegram,
+        <a href="https://telegram.org/">
+         <strong>
+          visit here
+         </strong>
+        </a>
+        .
+       </p>
+       <h2 id="understanding-the-workflow">
+        Understanding the workflow
+       </h2>
+       <p>
+        The entire workflow is like this:
+       </p>
+       <ul>
+        <li>
+         The
+         <code>
+          contracts/
+         </code>
+         folder contains the Tezos smart contracts written in Python with SmartPy.
+        </li>
+        <li>
+         The
+         <code>
+          .env
+         </code>
+         file contains the
+         <a href="">
+          environment variables
+         </a>
+         to deploy the contracts to. For this project, it's your wallet private key
+         <code>
+          ORIGINATOR_PRIVATE_KEY
+         </code>
+         and the Tezos RPC URL
+         <code>
+          TEZOS_RPC_URL
+         </code>
+         .
+        </li>
+        <li>
+         The
+         <code>
+          deployment/
+         </code>
+         folder will contain
+         <code>
+          deploy.ts
+         </code>
+         , a script that will deploy the compiled files to the Tezos Test Network (TestNet) specified by the variable
+         <code>
+          TEZOS_RPC_URL
+         </code>
+         in thr
+         <code>
+          .env
+         </code>
+         file.
+        </li>
+        <li>
+         The
+         <code>
+          compile.sh
+         </code>
+         file will first compile the contracts in the
+         <code>
+          contracts/
+         </code>
+         folder one-by-one and save them in a temporary hidden folder called
+         <code>
+          .smartpy_out/
+         </code>
+         in the project root directory. From there, it will run
+         <code>
+          deployment/deploy.ts
+         </code>
+         so that the code is deployed according to the environment variable settings in the
+         <code>
+          .env
+         </code>
+         file.
+        </li>
+       </ul>
+       <p>
+        We're finally good to go! Give yourself a pat on the back if you have made it this far! We'll be starting the coding part! 😃
+       </p>
+       <h2 id="coding-the-required-scripts-while-understanding-them">
+        Coding the required scripts (while understanding them)
+       </h2>
+       <h3 id="coding-compilesh">
+        Coding
+        <code>
+         compile.sh
+        </code>
+       </h3>
+       <pre><code class="language-sh">#!/usr/bin/env bash
+
+set -e -o pipefail
+
+echo "----------------------------------------"
+echo "Compiling Dao Contracts"
+echo "----------------------------------------"
+
+# Expected location of SmartPy CLI.
+SMART_PY_CLI=~/smartpy-cli/SmartPy.sh
+
+# Output directory
+OUT_DIR=./compilation
+
+# Array of files to compile.
+CONTRACTS_ARRAY=($(cd contracts &amp;&amp; ls));
+
+echo "----------------------------------------"
+echo "Contracts found:"
+echo $CONTRACTS_ARRAY
+echo "----------------------------------------"
+
+# Ensure we have a SmartPy binary.
+if [ ! -f "$SMART_PY_CLI" ]; then
+    echo "Fatal: Please install SmartPy CLI at $SMART_PY_CLI" &amp;&amp; exit
+fi
+
+# Compile a contract.
+# Args &lt;contract name, ex: minter&gt; &lt;invocation, ex: MinterContract()&gt; &lt;out dir&gt;
+function processContract {
+    CONTRACT_NAME=$1
+    OUT_DIR=$2
+    CONTRACT_IN="${CONTRACT_NAME}.py"
+    CONTRACT_OUT="${CONTRACT_NAME}.tz"
+    CONTRACT_COMPILED="${CONTRACT_NAME}/step_000_cont_0_contract.tz"
+
+    echo "&gt;&gt; Processing ${CONTRACT_NAME}"
+
+    # Ensure file exists.
+    if [ ! -f "$CONTRACT_IN" ]; then
+        echo "Fatal: $CONTRACT_IN not found. Running from wrong dir?" &amp;&amp; exit
+    fi
+
+    # Test
+    echo "&gt;&gt;&gt; [1 / 3] Testing ${CONTRACT_NAME} "
+    $SMART_PY_CLI test $CONTRACT_IN $OUT_DIR
+    echo "&gt;&gt;&gt; Done"
+
+    echo "&gt;&gt;&gt; [2 / 3] Compiling ${CONTRACT_NAME}"
+    $SMART_PY_CLI compile $CONTRACT_IN $OUT_DIR
+    echo "&gt;&gt;&gt; Done."
+
+    echo "&gt;&gt;&gt; [3 / 3] Copying Artifacts"
+    cp $OUT_DIR/$CONTRACT_COMPILED $CONTRACT_OUT
+    echo "&gt;&gt;&gt; Written to ${CONTRACT_OUT}"
+}
+
+echo "&gt; [1 / 3] Unit Testing and Compiling Contracts."
+for i in ${!CONTRACTS_ARRAY[@]}; do
+    echo "&gt;&gt; [$((i + 1)) / ${#CONTRACTS_ARRAY[@]}] Processing ${CONTRACTS_ARRAY[$i]}"
+    processContract ${CONTRACTS_ARRAY[$i]} $OUT_DIR
+    echo "&gt;&gt; Done."
+    echo ""
+done
+echo "&gt; Compilation Complete."
+echo ""
+
+# Remove other artifacts to reduce noise.
+echo "&gt; [2 / 2] Cleaning up"
+rm -rf $OUT_DIR
+mkdir $OUT_DIR
+echo "&gt; All tidied up."
+echo ""
+
+echo "----------------------------------------"
+echo "Task complete."
+echo "----------------------------------------"
+</code></pre>
+      </div>
+     </div>
+     <div class="grid lg:grid-cols-8 grid-cols-1 w-100 my-5 py-5" id="navigation">
+      <a class="justify-center hover:bg-gray-800 rounded-md hover:text-white font-bold border-2 col-span-1 lg:col-span-2 text-center text-gray-700 px-5 py-3 mx-5" href="https://anuran-roy.github.io/writings/posts.html">
+       ⬅  Previous Post
+      </a>
+      <div class="col-span-1 md:cols-span-1 lg:col-span-4 px-5 mx-5 py-3">
+      </div>
+      <a class="justify-center hover:bg-gray-800 rounded-md hover:text-white border-2 font-bold col-span-1 lg:col-span-2 text-center text-gray-700 px-5 py-3 mx-5" href="/blog/machine-learning.html">
+       Next Post  ➡
+      </a>
+     </div>
+     <div class="invisible py-5 my-5">
+     </div>
+    </div>
+    <div class="lg:top-0 lg:bottom-0 lg:h-screen justify-center content-center align-center object-center flex flex-col lg:col-span-2 text-center m-3" id="meta">
+     <p class="flex justify-center items-center flex-col">
+      <img alt="Author Picture" class="rounded-full py-5 my-5" src="https://pbs.twimg.com/profile_images/1421779872364564482/vZljyGHa_400x400.jpg" width="30%"/>
+      <div class="text-2xl text-center font-bold">
+       About
+      </div>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, accusamus explicabo a veritatis culpa, expedita quos illo quibusdam earum mollitia molestiae ducimus sed sunt sit. Magnam earum quia est a iure voluptatem eligendi excepturi place
+     </p>
+     <p class="flex flex-col lg:columns-3 columns-1 py-5 my-5">
+      <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="http://github.com/anuran-roy/">
+       GitHub
+      </a>
+      <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="http://www.linkedin.com/in/anuran-roy/">
+       LinkedIn
+      </a>
+      <a class="m-2 py-2 hover:bg-gray-800 hover:text-white rounded-md" href="http://twitter.com/AnuranRoy">
+       Twitter
+      </a>
+     </p>
+    </div>
+   </div>
+   <div class="fixed left-0 right-0 bottom-0 bg-gray-100 opacity-80 hover:opacity-100 p-3 align-center flex justify-center items-center flex-col" id="footer">
+    <span class="text-gray-700 text-center">
+     Using Blogtastic theme in
+     <a class="font-bold text-blue-500" href="https://github.com/fossworx-labs/fossfolio">
+      FOSSfolio
+     </a>
+     . Made by
+     <a class="font-bold text-blue-500" href="https://linktr.ee/anuranroy">
+      Anuran
+     </a>
+     with 💙
+    </span>
+   </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/prism.min.js">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.28.0/plugins/autoloader/prism-autoloader.min.js">
+  </script>
+ </body>
+</html>
